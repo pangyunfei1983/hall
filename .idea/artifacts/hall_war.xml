@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="hall:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>hall</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="hall-0.0.1-SNAPSHOT.war">
+      <element id="artifact" artifact-name="hall:war exploded" />
+    </root>
+  </artifact>
+</component>
