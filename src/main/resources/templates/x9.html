@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta content="text/html;charset=UTF-8"/>
+    <title>Title</title>
+    <script src="/scripts/jquery-1.4.1.js" type="application/javascript"></script>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <script type="text/javascript">
+
+        function setDate(text) {
+            $('#tdDateTime').html(text.now);
+        }
+
+        function setWait(text) {
+            $('#tdWait').html( text.wait);
+        }
+
+        function setSendNo(text) {
+            document.getElementById("tdSendNo").innerHTML = text;
+        }
+
+        function setResult(text) {
+
+            document.getElementById("tdResult").innerHTML = text;
+        }
+        
+
+        function GetDate() {
+            $.ajax({
+                type: 'POST',
+                url: 'x9',
+                contentType: "application/json;charset=UTF-8",
+                async: true,
+                timeout: 3000,
+                dataType: 'json',
+                cache: false,
+                data: JSON.stringify({action: 'getTime',  windowid: $('#windowid').val()}),
+                success: function (result) {
+                    if (result == "") {
+                        setResult('服务器返回为空!');
+                    }
+                    else {
+                        setDate(result);
+                    }
+
+                },
+                error: function () {
+                    setResult('无法连接服务器!');
+                }
+            });
+        }
+
+
+        function GetWait() {
+            $.ajax({
+                type: 'POST',
+                url: 'x9',
+                contentType: "application/json;charset=UTF-8",
+                async: true,
+                timeout: 3000,
+                dataType: 'json',
+                cache: false,
+                data: JSON.stringify({action: 'getWait', windowid: $('#windowid').val(),floor: $('#floor').val()}),
+                success: function (result) {
+                    if (result == "") {
+                        setResult('服务器返回为空!');
+                    }
+                    else {
+                        setWait(result);
+                    }
+                },
+                error: function () {
+                    setResult('无法连接服务器!');
+                }
+            });
+        }
+
+
+        function Call(data) {
+
+
+            if (JSON.stringify(data) != "") {
+
+                var ja =JSON.parse(JSON.stringify(data));
+
+                document.getElementById("window_no").innerHTML = document.getElementById("windowid").value;
+                document.getElementById("tdSendNo").innerHTML =ja.sendno.toString();
+                document.getElementById("tdWait").innerHTML = ja.wait.toString();
+                document.getElementById("tdServname").innerHTML = ja.servname.toString();
+                setResult("呼叫操作成功!");
+            }
+
+
+        }
+
+        function DoCall() {
+
+            $.ajax({
+                type: 'POST',
+                url: 'x9',
+                contentType: "application/json;charset=UTF-8",
+                async: true,
+                timeout: 3000,
+                dataType: 'json',
+                cache: false,
+                data: JSON.stringify({action: 'doCall', windowid: $('#windowid').val(),floor: $('#floor').val()}),
+                success: function (result) {
+                    Call(result);
+                },
+                error: function () {
+                    setResult("无法连接服务器!");
+                }
+            });
+        }
+
+
+        function DoReCall() {
+
+            $.ajax({
+                type: 'POST',
+                url: 'x9',
+                contentType: "application/json;charset=UTF-8",
+                async: true,
+                timeout: 3000,
+                dataType: 'json',
+                cache: false,
+                data: JSON.stringify({action: 'doReCall', windowid: $('#windowid').val(),floor: $('#floor').val()}),
+                success: function (result) {
+                    setResult("重呼操作成功!");
+                },
+                error: function () {
+                    setResult("无法连接服务器!");
+                }
+            });
+        }
+
+
+        function DoCancel() {
+
+            $.ajax({
+                type: 'POST',
+                url: 'x9',
+                contentType: "application/json;charset=UTF-8",
+                async: true,
+                timeout: 3000,
+                dataType: 'json',
+                cache: false,
+                data: JSON.stringify({action: 'doCancel', windowid: $('#windowid').val(),floor: $('#floor').val()}),
+                success: function (result) {
+
+                    setResult("号码作废");
+                    Call(result);
+                },
+                error: function () {
+                    setResult("无法连接服务器!");
+                }
+            });
+        }
+
+
+        function DoPause() {
+
+            $.ajax({
+                type: 'POST',
+                url: 'x9',
+                contentType: "application/json;charset=UTF-8",
+                async: true,
+                timeout: 3000,
+                dataType: 'json',
+                cache: false,
+                data: JSON.stringify({action: 'doPause', windowid: $('#windowid').val(),floor: $('#floor').val()}),
+                success: function (result) {
+
+                    setResult("暂停服务!");
+                },
+                error: function () {
+                    setResult("无法连接服务器!");
+                }
+            });
+        }
+
+
+        function start() {
+
+            $("#window_no").html( $('#windowid').val());
+            GetDate();
+            setInterval("GetDate()", 60000); //1000为1秒钟
+          //  DoCall();
+            GetWait();
+
+            audioPlay("/audio/ding.mp3");
+          //  setInterval("GetWait()", 5000); //1000为1秒钟
+        }
+
+
+    </script>
+</head>
+<body style=" background-color:White;" onload="start()">
+<form id="form1" runat="server">
+    <table style="border-color: #99CCFF; width: 1000px; height:550px; font-size:20px; font-style: normal; font-weight: bold; font-family: 黑体; empty-cells: show; table-layout:fixed; "
+           align="center" border="0px" cellpadding="0" cellspacing="0">
+
+        <tr>
+            <td colspan="4" style=" height: 100px; text-align: center;">
+                <img alt="" th:src="@{images/logo.jpg}"/></td>
+        </tr>
+
+        <tr>
+            <td style="height: 60px; width:250px; background-color: #FFCC66; text-align: center; font-size: 25px;  color: #FFFFFF; ">
+                窗口号
+            </td>
+            <td id="window_no"
+                style=" width:250px; text-align: center; font-size: 40px; color: #CC3300; font-weight: bold;">
+                &nbsp;
+            </td>
+            <td style="height: 60px; width:250px; background-color: #FFCC66; text-align: center; font-size: 25px;  color: #FFFFFF; ">
+                窗口名称
+            </td>
+            <td style=" width:250px; text-align: center; font-size: 25px; ">
+                &nbsp;
+            </td>
+        </tr>
+
+
+        <tr>
+            <td style="height: 60px; width:250px; background-color: #99CCFF; text-align: center; font-size: 25px;  color: #FFFFFF; ">
+                排队号码
+            </td>
+            <td id="tdSendNo" style=" width:250px; text-align: center; font-size: 40px;   ">
+                &nbsp;
+            </td>
+            <td style="height: 60px; width:250px; background-color: #99CCFF; text-align: center; font-size: 25px;  color: #FFFFFF; ">
+                等待人数
+            </td>
+            <td id="tdWait" style=" width:250px; text-align: center; font-size: 40px; ">
+                &nbsp;
+            </td>
+        </tr>
+
+
+        <tr>
+            <td bgcolor=""
+                style="height: 60px; background-color: #3399FF;  text-align: center; font-size: 25px;  color: #FFFFFF; ">
+                &nbsp;事项名称
+            </td>
+            <td id="tdServname" colspan="3" bgcolor=""
+                style=" background-color: #3399FF; overflow:hidden; text-overflow:ellipsis;white-space:nowrap;">
+                &nbsp;
+            </td>
+        </tr>
+
+
+        <tr>
+            <td colspan="2" align="center" height="50px">
+                &nbsp;<img alt="" th:src="@{/images/call.jpg}" width="300px" onclick="DoCall()"/></td>
+
+            <td colspan="2" align="center">
+                &nbsp;<img alt="" th:src="@{images/recall.png}" width="300px" onclick="DoReCall()"/></td>
+
+        </tr>
+
+
+        <tr>
+            <td id="tdDateTime" style="color:red; height: 50px; text-align:center; " colspan="4"></td>
+        </tr>
+        <tr>
+            <td id="tdResult" style="color:red; height: 50px; text-align:center; " colspan="4"></td>
+        </tr>
+    </table>
+
+    <input type="hidden" id="windowid" name="windowid" th:value="${windowid}"/>
+    <input type="hidden" id="floor" name="floor" th:value="${floor}"/>
+
+</form>
+</body>
+</html>
