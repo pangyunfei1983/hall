@@ -7,28 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bc1bd06a-9cf3-422d-9b3e-ed6805fc3b4e" name="Default Changelist" comment="2019-12-25">
-      <change afterPath="$PROJECT_DIR$/WEB-INF/web.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/yxzh/hall/controller/CallController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/yxzh/hall/controller/DisplayController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/yxzh/hall/mapper/DisplayMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/yxzh/hall/service/CallInfoService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/yxzh/hall/service/DisplayService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/audio/ding.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/120.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/call.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/cancel.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/home.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/logo.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/pause.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/recall.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scripts/jquery-1.4.1-vsdoc.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scripts/jquery-1.4.1.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scripts/jquery-1.4.1.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/styles/Site.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/x9.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hall.iml" beforeDir="false" afterPath="$PROJECT_DIR$/hall.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -191,7 +170,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1577241133985</updated>
-      <workItem from="1577241140890" duration="10871000" />
+      <workItem from="1577241140890" duration="11789000" />
     </task>
     <task id="LOCAL-00001" summary="2019-12-25">
       <created>1577249097712</created>
@@ -200,7 +179,14 @@
       <option name="project" value="LOCAL" />
       <updated>1577249097713</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="2019-12-25">
+      <created>1577257428601</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1577257428601</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -240,18 +226,18 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="785" y="427" key="#com.intellij.javaee.module.view.common.J2EE.J2EEDeploymentDescriptorLocationPanel.changeDDPath/0.0.1920.1040@0.0.1920.1040" timestamp="1577253475914" />
-    <state x="560" y="116" key="CommitChangelistDialog2" timestamp="1577257381594">
+    <state x="560" y="116" key="CommitChangelistDialog2" timestamp="1577257526091">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="560" y="116" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1577257381594" />
+    <state x="560" y="116" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1577257526091" />
     <state x="740" y="261" key="FileChooserDialogImpl" timestamp="1577253679987">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="261" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1577253679987" />
-    <state x="835" y="411" width="273" height="218" key="Github.ShareDialog" timestamp="1577249978865">
+    <state x="835" y="411" width="273" height="218" key="Github.ShareDialog" timestamp="1577266835412">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="835" y="411" width="273" height="218" key="Github.ShareDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1577249978865" />
+    <state x="835" y="411" width="273" height="218" key="Github.ShareDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1577266835412" />
     <state width="1639" height="34" key="GridCell.Tab.0.bottom" timestamp="1577254812089">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -312,10 +298,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="640" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1577241139453" />
-    <state x="752" y="437" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1577249346242">
+    <state x="752" y="437" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1577266806181">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="752" y="437" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1577249346242" />
+    <state x="752" y="437" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1577266806181" />
     <state x="744" y="311" key="git4idea.merge.GitMergeDialog" timestamp="1577249546338">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
