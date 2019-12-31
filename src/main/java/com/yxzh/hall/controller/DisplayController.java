@@ -14,7 +14,7 @@ public class DisplayController {
     @Autowired
     DisplayService displayService;
 
-    @RequestMapping(value = {"display"})
+    @RequestMapping(value = {"/display"})
     @ResponseBody
     public String GetWindowInfo(String windowid)
     {

@@ -18,7 +18,7 @@ public class CallController {
     @Autowired
     private CallInfoService service;
 
-    @RequestMapping("init")
+    @RequestMapping("/init")
     public String init(String windowid,String floor, Model model) {
         model.addAttribute("windowid", windowid);
         model.addAttribute("floor",floor);
@@ -26,7 +26,7 @@ public class CallController {
         return "x9";
     }
 
-    @RequestMapping(value = {"initNetwork"})
+    @RequestMapping(value = {"/initNetwork"})
     @ResponseBody
     public String initNetwork(@RequestBody(required=false) String json)
     {
@@ -42,7 +42,7 @@ public class CallController {
         return obj.toJSONString();
     }
 
-    @PostMapping(value = {"x9"})
+    @PostMapping(value = {"/x9"})
     @ResponseBody
     public String x9(@Valid @RequestBody String json) {
         if (json!=null && !json.isEmpty()) {
