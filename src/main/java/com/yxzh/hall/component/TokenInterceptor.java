@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 @Component
 public class TokenInterceptor extends HandlerInterceptorAdapter {
 
-    private static final String[] NOT_CHECK_URL = {"/pad/**","/windows/**", "/login/**"};
+    private static final String[] NOT_CHECK_URL = {"/pad/**","/windows/**", "/login"};
 
     @Resource
     private JwtConfig jwtConfig ;
@@ -29,13 +29,13 @@ public class TokenInterceptor extends HandlerInterceptorAdapter {
             return true;
         }
 
-/*        // 地址过滤
+        // 地址过滤
         String url = request.getServletPath() ;
 
         boolean isNotCheck = isNotCheck(url);
         if (isNotCheck) {
             return true;
-        }*/
+        }
 
 /*
         response.setCharacterEncoding("UTF-8");
@@ -86,7 +86,6 @@ public class TokenInterceptor extends HandlerInterceptorAdapter {
         System.out.println("servletPath = " + servletPath);
 
         for (String path : NOT_CHECK_URL) {
-            System.out.println("path = " + path);
 
             if (servletPath.equals(path)) {
                 return true;
@@ -95,8 +94,7 @@ public class TokenInterceptor extends HandlerInterceptorAdapter {
             // path 以 /** 结尾, servletPath 以 path 前缀开头
             if (path.endsWith("/**")) {
                 String pathStart = path.substring(0, path.lastIndexOf("/")+1);
-                System.out.println("pathStart = " + pathStart);
-                if (servletPath.startsWith(pathStart)) {
+               if (servletPath.startsWith(pathStart)) {
                     return true;
                 }
                 String pathSub = path.substring(0, path.lastIndexOf("/"));

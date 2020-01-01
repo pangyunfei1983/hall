@@ -17,15 +17,6 @@ public class InterceptorConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
 
-        List<String> excludePath = new ArrayList<>();
-        excludePath.add("/user_register");
-        excludePath.add("/login");
-        excludePath.add("/logout");
-        excludePath.add("/static/**");
-        excludePath.add("/assets/**");
-        excludePath.add("/templates/**");
-        excludePath.add("/public/**");
-
-        registry.addInterceptor(tokenInterceptor).addPathPatterns("/**").excludePathPatterns(excludePath);
+        registry.addInterceptor(tokenInterceptor).addPathPatterns("/**").excludePathPatterns("/login","/login.html","/assets/**","/static/**","/templates/**");
     }
 }
