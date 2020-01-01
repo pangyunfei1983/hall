@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 @Component
 public class TokenInterceptor extends HandlerInterceptorAdapter {
 
-    private static final String[] NOT_CHECK_URL = {"/pad/**","/windows/**", "/login"};
+    private static final String[] NOT_CHECK_URL = {"/pad/**","/windows/**"};
 
     @Resource
     private JwtConfig jwtConfig ;
@@ -32,10 +32,10 @@ public class TokenInterceptor extends HandlerInterceptorAdapter {
         // 地址过滤
         String url = request.getServletPath() ;
 
-        boolean isNotCheck = isNotCheck(url);
+       /* boolean isNotCheck = isNotCheck(url);
         if (isNotCheck) {
             return true;
-        }
+        }*/
 
 /*
         response.setCharacterEncoding("UTF-8");

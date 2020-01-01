@@ -18,12 +18,12 @@ public class CallController {
     @Autowired
     private CallInfoService service;
 
-    @RequestMapping("/init")
+    @RequestMapping("/pad/init")
     public String init(String windowid,String floor, Model model) {
         model.addAttribute("windowid", windowid);
         model.addAttribute("floor",floor);
 
-        return "x9";
+        return "/pad/x9home.html";
     }
 
     @RequestMapping(value = {"/initNetwork"})
@@ -42,7 +42,7 @@ public class CallController {
         return obj.toJSONString();
     }
 
-    @PostMapping(value = {"/x9"})
+    @PostMapping(value = {"/pad/x9"})
     @ResponseBody
     public String x9(@Valid @RequestBody String json) {
         if (json!=null && !json.isEmpty()) {
