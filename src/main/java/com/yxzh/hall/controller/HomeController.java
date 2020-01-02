@@ -1,19 +1,19 @@
 package com.yxzh.hall.controller;
 
-import com.yxzh.hall.component.JwtConfig;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.WebUtils;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.Map;
 
 @Controller
 public class HomeController {
 
-    @Resource
-    private JwtConfig jwtConfig ;
 
     @GetMapping(value="/login")
     public String login()
@@ -22,25 +22,15 @@ public class HomeController {
     }
 
     @PostMapping(value="/login")
-    @ResponseBody
-    public Map<String,String> login (@RequestParam("userName") String userName,
-                                     @RequestParam("passWord") String passWord){
-        Map<String,String> map = new HashMap<>() ;
+    public String login (@RequestParam("userid") String userid,
+                         @RequestParam("password") String password,HttpServletRequest request, HttpServletResponse response ){
 
-        String token = jwtConfig.getToken(userName) ;
-        if (!StringUtils.isEmpty(token)) {
-            map.put("token",token) ;
-            map.put("code", "200");
-            map.put("userName",userName) ;
-        }
-        else
-        {
-            map.put("token","") ;
-            map.put("code", "0");
-            map.put("userName","") ;
+
+        if (!StringUtils.isEmpty(userid)) {
+            WebUtils.setSessionAttribute(request,"userid",userid);
         }
 
-        return map ;
+        return "index" ;
     }
 
 }

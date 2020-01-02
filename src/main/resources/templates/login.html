@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta content="text/html;charset=UTF-8"/>
     <title>系统登录</title>
@@ -17,11 +17,11 @@
 </head>
 <body>
 
-<form class="layui-form layui-form-pane1" action="" lay-filter="form_main">
+<form class="layui-form layui-form-pane1" action="/login" lay-filter="form_main" method="post">
     <div class="layui-form-item">
         <label class="layui-form-label">用户名</label>
         <div class="layui-input-inline">
-            <input type="text" name="username" lay-verify="required|username" lay-reqText="用户名不能为空" required placeholder="请输入用户名" autocomplete="off" class="layui-input"  style="width: 200px;" maxlength="20">
+            <input type="text" name="userid" lay-verify="required|userid" lay-reqText="用户名不能为空" required placeholder="请输入用户名" autocomplete="off" class="layui-input"  style="width: 200px;" maxlength="20">
         </div>
     </div>
     <div class="layui-form-item">
@@ -55,9 +55,9 @@
 
         //自定义验证规则
         form.verify({
-            username: function(value){
-                if(value.length < 6){
-                    return '用户名必须大于等于6位';
+            userid: function(value){
+                if(value.length < 5){
+                    return '用户名必须大于等于5位';
                 }
                 if(/^[".chr(0xa1)."-".chr(0xff)."A-Za-z0-9_]+$/.test(value)==false)
                 {
@@ -69,7 +69,7 @@
 
         //初始赋值
         var thisValue = form.val('form_main', {
-            'username': ''
+            'userid': ''
             ,'password': ''
 
         });
@@ -79,7 +79,7 @@
         form.on('submit(*)', function(data){
             console.log(data)
             alert(JSON.stringify(data.field));
-            return false;
+            return true;
         });
 
         layui.$('#btnreset').on('click', function(){

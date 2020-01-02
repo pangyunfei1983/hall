@@ -5,6 +5,7 @@ import io.jsonwebtoken.Claims;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+import org.springframework.web.util.WebUtils;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -15,8 +16,7 @@ public class TokenInterceptor extends HandlerInterceptorAdapter {
 
     private static final String[] NOT_CHECK_URL = {"/pad/**","/windows/**"};
 
-    @Resource
-    private JwtConfig jwtConfig ;
+
 
     @Override
     public boolean preHandle(HttpServletRequest request,
@@ -31,48 +31,20 @@ public class TokenInterceptor extends HandlerInterceptorAdapter {
 
         // 地址过滤
         String url = request.getServletPath() ;
-
+        System.out.println("servletPath = " + url);
        /* boolean isNotCheck = isNotCheck(url);
         if (isNotCheck) {
             return true;
         }*/
 
-/*
-        response.setCharacterEncoding("UTF-8");
-        response.setContentType("application/json; charset=utf-8");
-        PrintWriter out = null;
-        try{
-            JSONObject json = new JSONObject();
-            json.put("success","false");
-            json.put("msg","认证失败，未通过拦截器");
-            json.put("code","50000");
-            response.getWriter().append(json.toJSONString());
-            System.out.println("认证失败，未通过拦截器");
-            //        response.getWriter().write("50000");
-        }catch (Exception e){
-            e.printStackTrace();
-            response.sendError(500);
-            return false;
-        }
-*/
-        // Token 验证
-        String token = request.getHeader(jwtConfig.getHeader());
-        if(StringUtils.isEmpty(token)){
-            token = request.getParameter(jwtConfig.getHeader());
-        }
-        if(StringUtils.isEmpty(token)){
+        String userid= (String) WebUtils.getSessionAttribute(request, "userid");
 
+         if(StringUtils.isEmpty(userid)){
             response.sendRedirect(request.getContextPath()+"/login");
             return false;
         }
-        Claims claims = jwtConfig.getTokenClaim(token);
-        if(claims == null || jwtConfig.isTokenExpired(claims.getExpiration())){
-            response.sendRedirect(request.getContextPath()+"/login");
-            return false;
-        }
-        //设置 identityId 用户身份ID
-        request.setAttribute("identityId", claims.getSubject());
-        return true;
+
+         return true;
     }
 
     /**
